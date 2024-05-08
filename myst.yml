@@ -1,0 +1,46 @@
+# See docs at: https://myst.tools/docs/mystjs/frontmatter
+version: 1
+project:
+  title: Fused Multi-Modal Electron Microscopy
+  subject: Tutorial
+  subtitle: A beginner's guide
+  authors:
+      - name: Jason Manassa
+        corresponding: True
+        affiliations: Department of Materials Science and Engineering, University of Michigan, Ann Arbor, MI, USA
+        orcid: 0000-0001-5167-5989
+        email: jmanassa@umich.edu
+  date: 2024-3-20
+  keywords: STEM, HAADF, EELS, EDX, Fused Multi-Modal
+  exports:
+  - format: pdf
+  - format: tex
+    template: arxiv_two_column
+    output: arxiv.zip
+  abbreviations:
+    4D-STEM: four dimensional scanning transmission electron microscopy
+    BibTeX: portmanteau of of “bibliography” and TeX (LaTeX)
+    DOI: digital object identifier
+    EWR: exit wave reconstruction
+    FAIR: findable, accessible, interoperable, and reusable
+    FFT: fast Fourier transform
+    FOV: field-of-view
+    GB: grain boundary
+    HAADF: high angle annular dark field
+    HRTEM: high resolution transmission electron microscopy
+    M&M: Microscopy and Microanalysis
+    PDF: portable document format
+    STEM: scanning transmission electron microscopy
+  thebe:
+    server: true
+site:
+  template: book-theme
+  title: Fused Multi-Modal Electron Microscopy
+  logo_text: Fused Multi-Modal Electron Microscopy
+  projects:
+    - slug: myst
+      path: .
+  actions:
+    - title: Learn More
+      url: https://doi.org/10.1038/s41524-021-00692-5
+  domains: []

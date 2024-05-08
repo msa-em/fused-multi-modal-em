@@ -1,0 +1,19 @@
+name: em-template
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - numpy
+  - scipy
+  - matplotlib
+  - plotly
+  - pyvista
+  - nglview
+  - h5py
+  - imageio
+  - imageio-ffmpeg
+  - ipywidgets
+  - ipympl
+  - jupyterlab
+  - jupyterlab-myst
+  - trame
