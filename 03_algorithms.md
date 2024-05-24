@@ -40,8 +40,8 @@ $x \in \mathbb{R}^{n_e \times n_x \times n_y} \rightarrow$ Concatenated Vector o
 
 **Definitions:**    
 $\nabla \Psi_1(x) = -\gamma\text{diag}(x^{-1})A^T(b_H - Ax^{\gamma})$<br>
-$\nabla \Psi_2(x) = 1 - b ø (x + \epsilon)$<br>
-$ø$ is element wise division
+$\nabla \Psi_2(x) = 1 - b ⊘ (x + \epsilon)$<br>
+$⊘$ is element wise division
 
 :::
 
