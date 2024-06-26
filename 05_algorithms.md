@@ -1,7 +1,7 @@
 ---
 title: Algorithms
 numbering:
-  enumerator: 1.%s
+  enumerator: 6.%s
 ---
 
 +++ {"part": "Algorithm"} 
@@ -18,7 +18,7 @@ $\Psi(x) = \frac{1}{2}\left\|\sum_i x_i - b_H\right\|^2 + \lambda_{Chem}\sum_i\l
 $b_H \in \mathbb{R}^{n_x \times n_y} \rightarrow$ HAADF Micrograph (Image Dimensions: $n_x \times n_y$)<br>
 $b_C \in \mathbb{R}^{n_e \times n_x \times n_y} \rightarrow$ Raw Chemical Maps (Total \# of Elements: $n_e$)<br>
 $N_{iter} = 30 \rightarrow$ Number of Main Cost Function Iterations<br>
-$n_g = 3 \rightarrow$ Number of Total Variation (TV) Iterations<br>
+$N_{iter TV} = 3 \rightarrow$ Number of Total Variation (TV) Iterations<br>
 $\epsilon = 0.2 \rightarrow$ Background Noise Threshold<br>
 $\lambda_{HAADF} = \frac{1}{n_e} \rightarrow$ HAADF Weight<br>
 $\lambda_{Chem} = 0.08 \rightarrow$ Data Consistency Weight, Ranges from 0 to 1<br>
@@ -33,29 +33,29 @@ $x \in \mathbb{R}^{n_e \times n_x \times n_y} \rightarrow$ Concatenated Vector o
 2. For $k = 1$ to $N_{iter}$:
 	1. $x^k = x^{k-1} - (\lambda_{HAADF}\nabla \Psi_1(x^k) + \lambda_{Chem} \nabla \Psi_2(x^k))$
 	2. For $i = 1$ to $n_e$:
-		1. $x_i^k = \text{TV\_FGP\_2D}(x_i^k, \lambda_{TV}, n_g) \text{  or  TV\_GP\_2D}(x_i^k, \lambda_{TV}, n_g)$
+		1. $x_i^k = \text{TV\_FGP\_2D}(x_i^k, \lambda_{TV}, N_{iter TV}) \text{  or  TV\_GP\_2D}(x_i^k, \lambda_{TV}, N_{iter TV})$
    3. End for
 3. End for
 4. Return $x^{N_{iter}}$
 
 **Definitions:**    
 $\nabla \Psi_1(x) = -\gamma\text{diag}(x^{-1})A^T(b_H - Ax^{\gamma})$<br>
-$\nabla \Psi_2(x) = 1 - b ⊘ (x + \epsilon)$<br>
-$⊘$ is element wise division
+$\nabla \Psi_2(x) = 1 - b \oslash (x + \epsilon)$<br> 
+$\oslash$ is element wise division
 
 :::
 
 :::{prf:algorithm} 2D Total Variation Fast Gradient Projection Method
 :label: (TV_FGP_2D)
 **Inputs:**  
-$b \in \mathbb{R}^{n_x \times n_y} \rightarrow$ 2D Image, $\lambda \rightarrow$ Regularization Parameter, $n_g \rightarrow$ Number of Iterations
+$b \in \mathbb{R}^{n_x \times n_y} \rightarrow$ 2D Image, $\lambda \rightarrow$ Regularization Parameter, $N_{iter TV} \rightarrow$ Number of Iterations
 
 **Output:**    
 $x \in \mathbb{R}^{n_e \times n_x \times n_y} \rightarrow$ Concatenated Vector of Recovered Maps
 
 **TV_FGP_2D Function:**    
 1.  $({r}_x, {r}_y) = ({p}_x, {p}_y) = \left({0}_{(m-1) \times n}, {0}_{m \times (n-1)}\right), \quad t_1 = 1$
-2.  For $k = 1, \ldots, n_g$:
+2.  For $k = 1, \ldots, N_{iter TV}$:
 	1. $({p}_x, {p}_y) = {P}_p \left[ ({r}_x, {r}_y) + \frac{1}{8\lambda} \mathcal{L}^T\left({P}_c\left[b - \lambda \mathcal{L}({r}_x, {r}_y)\right]\right) \right]$
     2. $t_{k+1} = \frac{1 + \sqrt{1 + 4t_k^2}}{2}$
     3. $({r}_x^{k+1}, {r}_y^{k+1}) = ({p}_x, {p}_y) + \frac{t_k - 1}{t_{k+1}}\left(({p}_x - {p}_x^{k-1}, {p}_y - {p}_y^{k-1})\right)$
@@ -66,17 +66,17 @@ $x \in \mathbb{R}^{n_e \times n_x \times n_y} \rightarrow$ Concatenated Vector o
 :::{prf:algorithm} 2D Total Variation Gradient Projection Method
 :label: (TV_GP_2D)
 **Inputs:**  
-$b \in \mathbb{R}^{n_x \times n_y} \rightarrow$ 2D Image, $\lambda \rightarrow$ Regularization Parameter, $n_g \rightarrow$ Number of Iterations
+$b \in \mathbb{R}^{n_x \times n_y} \rightarrow$ 2D Image, $\lambda \rightarrow$ Regularization Parameter, $N_{iter TV} \rightarrow$ Number of Iterations
 
 **Output:**    
 $x \in \mathbb{R}^{n_e \times n_x \times n_y} \rightarrow$ Concatenated Vector of Recovered Maps
 
 **TV_GP_2D Function:**    
 1.  $p_x^0 = \mathbf{0} \in \mathbb{R}^{(m-1) \times n}$, $p_y^0 = \mathbf{0} \in \mathbb{R}^{m \times (n-1)}$
-2.  For $k = 1, \ldots, n_g$:
+2.  For $k = 1, \ldots, N_{iter TV}$:
 	1. $(p_x^k, p_y^k) = P_p(p_x^{k-1}, p_y^{k-1}) + \frac{1}{8}\mathcal{L}^T(P_c(b - \lambda \mathcal{L}(p_x^{k-1}, p_y^{k-1})))$
 3. End for
-4. Return $x^* = P_c(b - \lambda \mathcal{L}(p_x^{n_g}, p_y^{n_g}))$
+4. Return $x^* = P_c(b - \lambda \mathcal{L}(p_x^{N_{iter TV}}, p_y^{N_{iter TV}}))$
 :::
 
 :::{prf:algorithm} The Linear Operation 

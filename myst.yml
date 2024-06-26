@@ -5,41 +5,92 @@ project:
   subject: Tutorial
   subtitle: A beginner's guide
   authors:
-      - name: Jason Manassa
-        corresponding: True
-        affiliations: Department of Materials Science and Engineering, University of Michigan, Ann Arbor, MI, USA
-        orcid: 0000-0001-5167-5989
-        email: jmanassa@umich.edu
+    - name: Jason Manassa
+      corresponding: True
+      affiliations:
+        - Department of Materials Science and Engineering, University of Michigan, Ann Arbor, MI, USA
+      orcid: 0000-0001-5167-5989
+      email: jmanassa@umich.edu
+    - name: Miti Shah
+      corresponding: False
+      affiliations:
+        - Department of Nuclear Engineering and Radiological Sciences, University of Michigan, Ann Arbor, MI, USA
+      orcid: 0000-0002-2142-7295
+      email: mitis@umich.edu
+    - name: Zichao Wendy Di
+      corresponding: False
+      affiliations:
+        - Mathematics and Computer Science Division, Argonne National Laboratory, Lemont, IL, USA
+      orcid: 0000-0002-4131-9363
+      email: wendydi@anl.gov
+    - name: Yi Jiang
+      corresponding: False
+      affiliations:
+        - Advanced Photon Source Facility, Argonne National Laboratory, Lemont, IL, USA
+      orcid: 0000-0002-2807-1324
+      email: yjiang@anl.gov
+    - name: Jeffrey Fessler
+      corresponding: False
+      affiliations:
+        - Department of Electrical Engineering and Computer Science, University of Michigan, Ann Arbor, MI, USA
+      orcid: 0000-0001-9998-3315
+      email: jtschwar@gmail.com
+    - name: Yu-Tsun Shao
+      corresponding: False
+      affiliations:
+        - Mork Family Department of Chemical Engineering and Materials Science, University of Southern California, Los Angeles, California, USA
+      orcid: 0000-0002-5574-0490
+      email: yutsunsh@usc.edu
+    - name: Min Gee Cho
+      corresponding: False
+      affiliations:
+        - Department of Materials Science and Engineering, University of California at Berkeley, Berkeley, CA, USA
+        - National Center for Electron Microscopy, Molecular Foundry, Lawrence Berkeley National Laboratory, Berkeley, CA, USA
+      orcid: 0000-0003-4490-7352
+    - name: Mary Scott
+      corresponding: False
+      affiliations:
+        - Department of Materials Science and Engineering, University of California at Berkeley, Berkeley, CA, USA
+        - National Center for Electron Microscopy, Molecular Foundry, Lawrence Berkeley National Laboratory, Berkeley, CA, USA
+      orcid: 0000-0002-9543-6725
+      email: mary.scott@berkeley.edu
+    - name: Jonathan Schwartz
+      corresponding: True
+      affiliations:
+        - Chan Zuckerberg Imaging Institute, 3400 Bridge Parkway, Redwood City, CA 94065, USA
+      orcid: 0000-0002-8063-6951
+      email: jtschwar@gmail.com
+    - name: Robert Hovden
+      corresponding: True
+      affiliations:
+        - Department of Materials Science and Engineering, University of Michigan, Ann Arbor, MI, USA
+      orcid: 0000-0002-3403-8803
+      email: hovden@umich.edu
   date: 2024-3-20
   keywords: STEM, HAADF, EELS, EDX, Fused Multi-Modal
   exports:
   - format: pdf
-  - format: tex
-    template: arxiv_two_column
-    output: arxiv.zip
   abbreviations:
-    4D-STEM: four dimensional scanning transmission electron microscopy
-    BibTeX: portmanteau of of “bibliography” and TeX (LaTeX)
     DOI: digital object identifier
-    EWR: exit wave reconstruction
-    FAIR: findable, accessible, interoperable, and reusable
     FFT: fast Fourier transform
-    FOV: field-of-view
-    GB: grain boundary
     HAADF: high angle annular dark field
-    HRTEM: high resolution transmission electron microscopy
-    M&M: Microscopy and Microanalysis
-    PDF: portable document format
+    EELS: elastic energy loss spectroscopy
+    EDX: energy-dispersive x-ray spectroscopy
+    EDS: energy-dispersive x-ray spectroscopy
+    MM: multi-modal
+    TV: total variation
+    GP: gradient projection method
+    FGP: fast gradient projection method
     STEM: scanning transmission electron microscopy
-  jupyter:
-    server:
-      url: http://localhost:8686
-      token: 60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6
+    SNR: signal-to-noise ratio
+    tif: tag image file format
+  thebe:
+    server: true
 site:
   template: book-theme
   title: Fused Multi-Modal Electron Microscopy
-  options:
-    logo_text: Fused Multi-Modal Electron Microscopy
+  nav: []
+  logo_text: Fused Multi-Modal Electron Microscopy
   projects:
     - slug: myst
       path: .

@@ -4,59 +4,21 @@ from skimage.io import imsave
 from tqdm import tqdm
 import numpy as np
 import tifffile
+import h5py
 
-def plot_elemental_images(data,haadf,eList,nx,ny,nrows,ncols):
-
-	fig, ax = plt.subplots(nrows,ncols,figsize=(12,8))
-	ax = ax.flatten()
-
-	ax[0].imshow(haadf.reshape(nx,ny)[70:130,25:85],cmap='gray'); ax[0].set_title('HAADF'); ax[0].axis('off')
-	tifffile.imwrite("images/HAADF.tiff", haadf.reshape(nx,ny)[70:130,25:85])
-	for ii in range(len(eList)):
-		ax[ii+1].imshow(data[ii*(nx*ny):(ii+1)*(nx*ny)].reshape(nx,ny)[70:130,25:85],cmap='gray'); ax[ii+1].set_title(eList[ii]); ax[ii+1].axis('off')
-		tifffile.imwrite(f"images/{eList[ii]}.tiff", data[ii*(nx*ny):(ii+1)*(nx*ny)].reshape(nx,ny)[70:130,25:85])
-
-	plt.show()
-
-def plot_elemental_images_movie(data, haadf, eList, nx, ny, nrows, ncols, kk):
-    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(8, 8))
-    
-    # Remove white space between subplots
-    fig.subplots_adjust(hspace=0, wspace=0)
-
-    # Save HAADF image
-    haadf_img = haadf.reshape(nx, ny)[70:130, 25:85]
-    axs[0, 0].imshow(haadf_img, cmap='gray')
-    axs[0, 0].axis('off')
-
-    # Save each elemental image
-    for ii, ax in zip(range(len(eList)), axs.flat[1:]):
-        elemental_img = data[ii*(nx*ny):(ii+1)*(nx*ny)].reshape(nx, ny)[70:130, 25:85]
-        ax.imshow(elemental_img, cmap='gray')
-        ax.axis('off')
-        if ii == 1:
-            ax.text(55, 55, f'Iteration: {kk}', color='white', fontsize=30, ha='right', va='bottom')
-
-
-    # Adjust layout and save plot
-    plt.tight_layout()
-    plt.subplots_adjust(wspace=0, hspace=0)
-    plt.savefig(f"images/movie/combined_{kk}.png", bbox_inches='tight', pad_inches=0)
-    plt.close()
-
-
-def plot_cost_function(data, saveBool):
-	plt.plot(data)
-	plt.xlabel('Iteration #')
-	plt.ylabel('Cost Function')
-	if saveBool:  plt.savefig('results/cost_fun.png')
-	plt.show()
-
-def save_images(data, haadf, eList, nx, ny):
-
-	imsave('results/haadf_recon.tif', haadf.reshape(nx,ny))
-	for ii in range(len(eList)):
-		imsave('results/{}_signal.tif'.format(eList[ii]), data[ii*(nx*ny):(ii+1)*(nx*ny)].reshape(nx,ny))
+def save_data(folder_name, chem_original, chem_fused, haadf_original, haadf_fused, eList, nx, ny,costHAADF,costChem,costTV,lambdaHAADF,lambdaChem,lambdaTV,gamma):
+    file = h5py.File(folder_name+'/Fused_Reconstruction.h5', 'w')
+    file.create_dataset('raw_haadf', data=haadf_original)
+    file.create_dataset('fused_haadf', data=haadf_fused)
+    imsave(folder_name+'/haadf_recon.tif', haadf_fused.reshape(nx,ny))
+    for ii in range(len(eList)):
+        file.create_dataset('raw_'+eList[ii], data=(chem_original[ii*(nx*ny):(ii+1)*(nx*ny)].reshape(nx,ny)))
+        file.create_dataset('fused_'+eList[ii], data=(chem_fused[ii*(nx*ny):(ii+1)*(nx*ny)].reshape(nx,ny)))
+        imsave(folder_name+'/{}_signal.tif'.format(eList[ii]), chem_fused[ii*(nx*ny):(ii+1)*(nx*ny)].reshape(nx,ny))
+    file.create_dataset('costHAADF', data=costHAADF); file['lambdaHAADF'] = lambdaHAADF
+    file.create_dataset('costChem', data=costChem); file['lambdaChem'] = lambdaChem
+    file.create_dataset('costTV', data=costTV); file['lambdaTV'] = lambdaTV
+    file['gamma'] = gamma; file.close()
 
 def plot_convergence(costLS, L_LS, costP, L_PS, costTV, L_TV):
 	fig, (ax1, ax2, ax3) = plt.subplots(3,1,figsize=(12,6))
@@ -117,47 +79,6 @@ def create_weighted_measurement_matrix(nx, ny, nz, zNums, gamma,method=0):
 
 	return A
 
-def create_measurement_matrix(nx, ny, nz):
-	#Create Measurement Matrix.
-	vals = np.zeros([nz*ny*nx], dtype=int)
-	row =  np.zeros([nz*ny*nx], dtype=int)
-	col =  np.zeros([nz*ny*nx], dtype=int)
-	vals[:] = 1
-
-	ii = 0; ind = 0
-	while ii < nz*nx*ny:
-		for jj in range(nz):
-			row[ii+jj] = ind
-			col[ii+jj] = ind + nx*ny*jj
-
-		ii += nz
-		ind += 1
-	A = csr_matrix((vals, (row, col)), shape=(nx*ny, nz*nx*ny), dtype=np.float32)
-
-	return A
-
-def calculate_curvature(dataX, dataY):
-    '''data is assumed to be same size
-	Uses Wendy's method'''
-
-    # Shape Data appropriately
-    n = np.shape(dataX)[0]
-    d = np.column_stack((dataX,dataY))
-    K = np.zeros(n-2) # Curvature Vector
-
-    for i in np.arange(n-2):
-        x = d[i:i+3,0]
-        y = d[i:i+3,1]
-
-        K[i]=( 2*np.abs((x[1]-x[0])*(y[2]-y[0])-(x[2]-x[0])*(y[1]-y[0]))
-        / np.sqrt(
-        ((x[1]-x[0])**2+(y[1]-y[0])**2)*
-        ((x[2]-x[0])**2+(y[2]-y[0])**2)*
-        ((x[2]-x[1])**2+(y[2]-y[1])**2)) )
-
-
-    return K
-
 # Class for Gradient Projection Method for Total Variation Denoising 
 class tvlib:
 
@@ -208,7 +129,7 @@ class tvlib:
 
     # Python Implementation of FGP-TV [1] denoising / regularization (2D Case)
     # This function is based on the paper by
-    # [2] Amir Beck and Marc Teboulle, "Fast Gradient-Based Algorithms for Constrained Total Variation Image Denoising and Deblurring Problems"
+    # Amir Beck and Marc Teboulle, "Fast Gradient-Based Algorithms for Constrained Total Variation Image Denoising and Deblurring Problems"
     def fgp_tv(self, input, lambdaTV=1e2, nIter=25):  
             
         (nx, ny) = input.shape
