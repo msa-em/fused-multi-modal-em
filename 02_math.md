@@ -14,12 +14,12 @@ Overview of Fused Multi-Modal pipeline on an atomic-res DyScO$_3$ STEM/EDX datas
 
 ### Cost function
 
-Fused multi-modal electron microscopy solves an optimization problem to recover micro- and nanoscale material chemistry. Solutions to the optimization problem are sought that encourage sparsity in the gradient domain while correlatisng high SNR HAADF projections with elementally sensitive EELS and/or EDX maps. These solutions ensure reduced spatial variation and accurate elemental mapping. The overall optimization function is framed as an inverse problem taking the following form:
+Fused multi-modal electron microscopy solves an optimization problem to recover micro- and nanoscale material chemistry. Solutions to the optimization problem are sought that encourage sparsity in the gradient domain while correlating high SNR HAADF projections with elementally sensitive EELS and/or EDX maps. These solutions ensure reduced spatial variation and accurate elemental mapping. The overall optimization function is framed as an inverse problem taking the following form:
 
 $$\begin{equation}
 \hat{x} = \arg\min_{x\geq 0} \left( \Psi_1(x) + \lambda_1 \Psi_2(x) + \lambda_2 TV(x) \right),
 \end{equation}$$
-where $\hat{x}$ is the final reconstruction, $\Psi_1$, $\Psi_2$, $TV$ are each optimization functions, and $\lambda$ are weights for their respective functions.
+where $\hat{x}$ is the final reconstruction, $\Psi_1$, $\Psi_2$, $TV$ are each optimization functions, and $\lambda$ are their respective weights.
 
 Each term is made up of standard optimization operations which is best illustrated by the full expression:
 
@@ -31,7 +31,7 @@ $$\begin{equation}
 
 Breaking down each variable, $b_i$ is the measured HAADF, $b_j$ and $x_i$ are the measured and reconstructed chemical maps for element $i$, $\epsilon$ is a number close to 0 that can account for the background and prevents $\log(0)$, $\log$ is applied element-wise to its arguments, superscript $T$ denotes vector transpose, and $\mathbf{1}$ denotes the vector of $n_x \times n_y$ ones, where $n_x \times n_y$ is the image size. When implementing an algorithm to solve this problem, we concatenate the multi-element spectral variables $(x_i, b_i)$ as a single vector: $x, b \in \mathbb{R}^{n_x \times n_y \times n_i}$, where $n_i$ denotes the total number of reconstructed elements.
 
-Equation 1.2 can be broken down into three key terms. The first term is our assumption of a forward model where HAADF projects can be described as a linear combination of elemental distributions raised to the power γ ∈ [1.4, 2] ([Hartel 1996](https://doi.org/10.1016/0304-3991(96)00020-4)). Incoherent linear imaging for high-angle elastic scattering scales with atomic number Z raised to γ. The second term ensures that any recovered signals maintain data fideltiy with the initial inputs (raw measurements).  A maximum negative log-likelihood for elemental maps dominated by low-count Poisson statistics is employed to enforce this data fidelty ([Di 2017](https://doi.org/10.1364/OE.25.013107)). The final term is common channel-wise total variation ($TV$) regularization ([Rudin 1992](https://doi.org/10.1364/OE.25.013107)). $TV$ reduces noise uniquely by prioritizing the preservation of sharp features. Each of these three terms has a weight attributed that must be balanced to ensure convergance and accurate elemental recovery.
+Equation 1.2 can be broken down into three key terms. The first term is our assumption of a forward model where HAADF projections can be described as a linear combination of elemental distributions raised to the power γ ∈ [1.4, 2] ([Hartel 1996](https://doi.org/10.1016/0304-3991(96)00020-4)). Incoherent linear imaging for high-angle elastic scattering scales with atomic number Z raised to γ. The second term ensures that any recovered signals maintain data fideltiy with the initial inputs (raw measurements).  A maximum negative log-likelihood for elemental maps dominated by low-count Poisson statistics is employed to enforce this data fidelty ([Di 2017](https://doi.org/10.1364/OE.25.013107)). The final term is common channel-wise total variation ($TV$) regularization ([Rudin 1992](https://doi.org/10.1364/OE.25.013107)). $TV$ reduces noise by prioritizing the preservation of sharp features. Each of these three terms has a weight attributed that must be balanced to ensure convergance and accurate elemental recovery.
 
 By descending along with the negative gradient directions for the first two terms and subsequently evaluate the isotropic TV proximal operator to denoise the chemical maps we can solve the cost function ([Beck 2009](10.1109/TIP.2009.2028250)). The first two term gradients are:
 $$\begin{equation}

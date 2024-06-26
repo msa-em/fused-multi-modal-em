@@ -25,7 +25,7 @@ Comparison of raw input vs fused multi-modal DyScO$_3$ HAADF elastic and EDX ine
 :::
 
 ```{warning} Step 0: Experimental Requirements
-To reconstruct using fused multi-modal electron microscopy you need to collect both elastic (e.g. HAADF) and inelastic (e.g. EELS / EDX) maps of your material. For the elastic signal, it is important that it provides Z-contrast of your elements. For the inelastic signal, you should have all chemistries in your sample mapped. Solving for under-determined chemical maps, or using difficult to interpret elastic signals are outside the scope of this tutorial. The collected chemical maps and HAADF must all have the same dimensionality, i.e. the same image size and number of pixels.  For this reason, we recommend using the simultaneously collected HAADF signal that is collected when taking an EDX/EELS scan.
+To reconstruct using fused multi-modal electron microscopy you need to collect both elastic (e.g. HAADF) and inelastic (e.g. EELS / EDX) maps of your material. For the elastic signal, it is important that it provides Z-contrast of your elements. For the inelastic signal, you should have all chemistries in your sample mapped. Solving for under-determined chemical maps, or using difficult to interpret elastic signals are outside the scope of this tutorial. The collected chemical maps and HAADF must all have the same dimensionality, i.e. the same image size and number of pixels.  For this reason, we recommend using the HAADF signal that is simultaneously collected when taking an EDX/EELS scan
 ```
 
 ```{admonition} Step 1: Python Imports
