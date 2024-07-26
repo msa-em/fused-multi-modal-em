@@ -1,4 +1,4 @@
-name: Fused Multi-Modal Electron Microscopy
+name: fusion
 channels:
   - conda-forge
 dependencies:
@@ -6,16 +6,10 @@ dependencies:
   - numpy
   - scipy
   - matplotlib
-  - plotly
-  - pyvista
-  - nglview
   - h5py
-  - imageio
-  - imageio-ffmpeg
-  - ipywidgets
   - ipympl
+  - ipywidgets
   - jupyterlab
   - jupyterlab-myst
-  - trame
-  - tqdm
-  - scipy.sparse
+  - tqdm 
+  - scikit-image
