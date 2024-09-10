@@ -12,7 +12,7 @@ Here, we presented a tutorial to introduce scientists to fused multi-modal elect
 (future)=
 ## Future Outlook
 
-Despite the validation in this work on EDX and EELS datasets, this data fusion approach can extend to ptychography, 4D-STEM, low-loss EELS, valence EELS, and other advanced modalities. As "advanced" techniques become commonplace alongside standard imaging, we expect more signals to be integrated into the fused multi-modal pipeline, allowing for an unprecedented understanding of nano- and atomic-scale materials. Additionally, the recent advancements in liquid helium cooling capabilities provide additional dose protection for current radiation-sensitive materials so that a cryo-fused multi-modal approach opens up the possibility of high-resolution chemical imaging in soft matter and other biological systems.
+Despite the validation in this work on X-EDS and EELS datasets, this data fusion approach can extend to ptychography, 4D-STEM, low-loss EELS, valence EELS, and other advanced modalities. As "advanced" techniques become commonplace alongside standard imaging, we expect more signals to be integrated into the fused multi-modal pipeline, allowing for an unprecedented understanding of nano- and atomic-scale materials. Additionally, the recent advancements in liquid helium cooling capabilities provide additional dose protection for current radiation-sensitive materials so that a cryo-fused multi-modal approach opens up the possibility of high-resolution chemical imaging in soft matter and other biological systems.
 
 
 

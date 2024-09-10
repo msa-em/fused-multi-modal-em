@@ -15,17 +15,17 @@ kernelspec:
 ### Guided Computation of Fused Multi-Modal Electron Microscopy
 
 +++ {"part": "Code Walkthrough"} 
-This tutorial describes how you can fuse your EELS/EDX maps with HAADF or similar elastic imaging modalities to improve chemical resolution. This is Tutorial 1 of 2 where we look at an atomic resolution HAADF and EDX dataset of DyScO$_3$. The multi-modal data fusion workflow relies on Python, and requires minimal user input with <10 tunable lines. Both here and in the Mathematical Overview section we outline best practices for these adjustments.  Within a few minutes, datasets such as the one in this tutorial can be transformed into resolution enhanced chemical maps. (Figure 4.1)
+This tutorial describes how you can fuse your EELS/X-EDS maps with HAADF or similar elastic imaging modalities to improve chemical resolution. This is Tutorial 1 of 2 where we look at an atomic resolution HAADF and X-EDS dataset of DyScO$_3$. The multi-modal data fusion workflow relies on Python, and requires minimal user input with <10 tunable lines. Both here and in the Mathematical Overview section we outline best practices for these adjustments.  Within a few minutes, datasets such as the one in this tutorial can be transformed into resolution enhanced chemical maps. (Figure 4.1)
 +++
 
 :::{figure} ./figs/Figure_3_Output.png
 :name: Raw vs Fused DyScO$_3$
 :width: 700px
-Comparison of raw input vs fused multi-modal DyScO$_3$ HAADF elastic and EDX inelastic images
+Comparison of raw input vs fused multi-modal DyScO$_3$ HAADF elastic and X-EDS inelastic images
 :::
 
 ```{warning} Step 0: Experimental Requirements
-To reconstruct using fused multi-modal electron microscopy you need to collect both elastic (e.g. HAADF) and inelastic (e.g. EELS / EDX) maps of your material. For the elastic signal, it is important that it provides Z-contrast of your elements. For the inelastic signal, you should have all chemistries in your sample mapped. Solving for under-determined chemical maps, or using difficult to interpret elastic signals are outside the scope of this tutorial. The collected chemical maps and HAADF must all have the same dimensionality, i.e. the same image size and number of pixels.  For this reason, we recommend using the HAADF signal that is simultaneously collected when taking an EDX/EELS scan
+To reconstruct using fused multi-modal electron microscopy you need to collect both elastic (e.g. HAADF) and inelastic (e.g. EELS X-EDS) maps of your material. For the elastic signal, it is important that it provides Z-contrast of your elements. For the inelastic signal, you should have all chemistries in your sample mapped. Solving for under-determined chemical maps, or using difficult to interpret elastic signals are outside the scope of this tutorial. The collected chemical maps and HAADF must all have the same dimensionality, i.e. the same image size and number of pixels.  For this reason, we recommend using the HAADF signal that is simultaneously collected when taking an EELS/X-EDS scan
 ```
 
 ```{admonition} Step 1: Python Imports
@@ -40,7 +40,7 @@ import numpy as np
 :::
 
 ```{admonition} Step 2: Load your data
-Load your inelastic and elastic data. Define the element names and their corresponding atomic weights. For the sake of this tutorial a generic .npz file is used, but for .dm3,.dm4,.emd, or another EM file format, just extract the 2D image data into numpy matrices. In Tutorial 2 this is shown by extracting from a .h5 file. Your elastic data should be stored in the HAADF variable, and your inelastic data (EDX/EELS) should be stored in the chemMap variable.
+Load your inelastic and elastic data. Define the element names and their corresponding atomic weights. For the sake of this tutorial a generic .npz file is used, but for .dm3,.dm4,.emd, or another EM file format, just extract the 2D image data into numpy matrices. In Tutorial 2 this is shown by extracting from a .h5 file. Your elastic data should be stored in the HAADF variable, and your inelastic data (X-EDS/EELS) should be stored in the chemMap variable.
 ```
 ```{tip} Loading alternate file formats
 If you are loading data from a .dm3, .dm4 or .emd file, we recommend you use HyperSpy.  The documentation for loading and saving data from those file types can be found [here](https://hyperspy.org/hyperspy-doc/v1.3/user_guide/io.html).

@@ -15,17 +15,17 @@ kernelspec:
 ### Guided Computation of Fused Multi-Modal Electron Microscopy
 
 +++ {"part": "Code Walkthrough"} 
-This tutorial is almost identical to the previous, but now we use a new Co$_3$O$_4$-Mn$_3$O$_4$ dataset which utilizes EELS instead of EDX. We also read from a .h5 file in a similar fashion to how one would read from a .dm3, .dm4, or .emd file format. The parameters for convergence have also changed slightly, highlighting how one set of weights may not work across datasets, hence assessing cost function convergence and regularization weighting is key. Just like the previous dataset, dramatic improvement in image quality is observed within just a few minutes of parameter tuning as seen in Figure 5.1
+This tutorial is almost identical to the previous, but now we use a new Co$_3$O$_4$-Mn$_3$O$_4$ dataset which utilizes EELS instead of X-EDS. We also read from a .h5 file in a similar fashion to how one would read from a .dm3, .dm4, or .emd file format. The parameters for convergence have also changed slightly, highlighting how one set of weights may not work across datasets, hence assessing cost function convergence and regularization weighting is key. Just like the previous dataset, dramatic improvement in image quality is observed within just a few minutes of parameter tuning as seen in Figure 5.1
 +++
 
 :::{figure} ./figs/Figure_6_Output_2.png
 :name: Raw vs Fused Co$_3$O$_4$-Mn$_3$O$_4$
 :width: 700px
-Comparison of raw input vs fused multi-modal Co$_3$O$_4$-Mn$_3$O$_4$ HAADF elastic and EDX inelastic images
+Comparison of raw input vs fused multi-modal Co$_3$O$_4$-Mn$_3$O$_4$ HAADF elastic and X-EDS inelastic images
 :::
 
 ```{warning} Step 0: Experimental Requirements
-To reconstruct using fused multi-modal electron microscopy you need to collect both elastic (e.g. HAADF) and inelastic (e.g. EELS / EDX) maps of your material. For the elastic signal, it is important that it provides Z-contrast of your elements. For the inelastic signal, you should have all chemistries in your sample mapped. Solving for under-determined chemical maps, or using difficult to interpret elastic signals is outside the scope of this tutorial.
+To reconstruct using fused multi-modal electron microscopy you need to collect both elastic (e.g. HAADF) and inelastic (e.g. EELS/X-EDS) maps of your material. For the elastic signal, it is important that it provides Z-contrast of your elements. For the inelastic signal, you should have all chemistries in your sample mapped. Solving for under-determined chemical maps, or using difficult to interpret elastic signals is outside the scope of this tutorial.
 ```
 
 ```{admonition} Step 1

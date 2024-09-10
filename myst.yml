@@ -115,8 +115,7 @@ project:
     FFT: fast Fourier transform
     HAADF: high angle annular dark field
     EELS: elastic energy loss spectroscopy
-    EDX: energy-dispersive x-ray spectroscopy
-    EDS: energy-dispersive x-ray spectroscopy
+    X-EDS: energy-dispersive x-ray spectroscopy
     MM: multi-modal
     TV: total variation
     GP: gradient projection method

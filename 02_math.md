@@ -7,14 +7,14 @@ numbering:
 :::{figure} ./figs/Figure_1_math.png
 :name: fig_math
 :width: 700px
-Overview of Fused Multi-Modal pipeline on an atomic-res DyScO$_3$ STEM/EDX dataset
+Overview of Fused Multi-Modal pipeline on an atomic-res DyScO$_3$ STEM/X-EDS dataset
 :::
 
 +++ {"part": "Cost Function"} 
 
 ### Cost function
 
-Fused multi-modal electron microscopy solves an optimization problem to recover micro- and nanoscale material chemistry. Solutions to the optimization problem are sought that encourage sparsity in the gradient domain while correlating high SNR HAADF projections with elementally sensitive EELS and/or EDX maps. These solutions ensure reduced spatial variation and accurate elemental mapping. The overall optimization function is framed as an inverse problem taking the following form:
+Fused multi-modal electron microscopy solves an optimization problem to recover micro- and nanoscale material chemistry. Solutions to the optimization problem are sought that encourage sparsity in the gradient domain while correlating high SNR HAADF projections with elementally sensitive EELS and/or X-EDS maps. These solutions ensure reduced spatial variation and accurate elemental mapping. The overall optimization function is framed as an inverse problem taking the following form:
 
 $$
 \hat{x} = \arg\min_{x\geq 0} \left( \Psi_1(x) + \lambda_1 \Psi_2(x) + \lambda_2 \text{TV}(x) \right),
