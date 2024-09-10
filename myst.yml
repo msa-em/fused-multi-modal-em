@@ -36,7 +36,7 @@ project:
         - Advanced Photon Source Facility, Argonne National Laboratory, Lemont, IL, USA
       orcid: 0000-0002-2807-1324
       email: yjiang@anl.gov
-    - name: Jeffrey Fessler
+    - name: Jeffrey A. Fessler
       corresponding: False
       affiliations:
         - Department of Electrical Engineering and Computer Science, University of Michigan, Ann Arbor, MI, USA
@@ -48,7 +48,7 @@ project:
         - Mork Family Department of Chemical Engineering and Materials Science, University of Southern California, Los Angeles, California, USA
       orcid: 0000-0002-5574-0490
       email: yutsunsh@usc.edu
-    - name: Mary Scott
+    - name: Mary C. Scott
       corresponding: False
       affiliations:
         - Department of Materials Science and Engineering, University of California at Berkeley, Berkeley, CA, USA

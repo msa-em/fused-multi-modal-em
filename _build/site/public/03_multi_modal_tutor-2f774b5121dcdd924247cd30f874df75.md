@@ -1,5 +1,5 @@
 ---
-title: Multi-Modal Tutorial ScDyO3
+title: Multi-Modal Tutorial DyScO3
 numbering:
   enumerator: 4.%s
 jupytext:
