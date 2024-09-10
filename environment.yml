@@ -1,4 +1,4 @@
-name: fusion
+name: fused-multi-modal-em
 channels:
   - conda-forge
 dependencies:

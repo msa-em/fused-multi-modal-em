@@ -4,7 +4,7 @@ numbering:
   enumerator: 3.%s
 ---
 
-:::{figure} ./figs/figure_1_math.png
+:::{figure} ./figs/Figure_1_math.png
 :name: fig_math
 :width: 700px
 Overview of Fused Multi-Modal pipeline on an atomic-res DyScO$_3$ STEM/EDX dataset

@@ -216,6 +216,7 @@ For this example we purposefully had the starting values far from ideal. If you 
 ```
 :::{figure} #app:tutorialtwo
 :name: lambda_widget_2
+:placeholder: ./figs/Figure_5.2_widget_placeholder.png
 Try it yourself! For this example we purposefully had the starting values off. If you are stuck look at the convergence plot values above for more ideal values.
 :::
 

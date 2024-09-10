@@ -215,6 +215,7 @@ Try changing lambda parameters to see how convergence is effected.  Notice how b
 ```
 :::{figure} #app:tutorialone
 :name: lambda_widget_1
+:placeholder: ./figs/Figure_4.4_widget_placeholder.png
 Try it yourself! Lambda parameter tuning
 :::
 

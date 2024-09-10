@@ -1,76 +1,115 @@
 # See docs at: https://myst.tools/docs/mystjs/frontmatter
 version: 1
 project:
+  id: msa-em-fused-multi-modal-em-1
   title: Fused Multi-Modal Electron Microscopy
-  subject: Tutorial
   subtitle: A beginner's guide
+  description: Tutorial for 2D fused multi-modal electron microscopy
+  #  jupyter: true
+  jupyter:
+    binder:
+      url: https://y2j74k9mn0bz.curvenote.dev/services/binder/
+      repo: msa-em/fused-multi-modal-em
+      ref: main
+  #  jupyter:
+  #    server:
+  #      url: 'http://localhost:8888'
+  #      token: '512ac78f14e1141db1fac17e8b4099c1e5bc7d589518b38c'
+  keywords:
+    - Scanning Transmission Electron Microscopy
+    - High Angle Annular Dark Field
+    - Electron Energy Loss Spectroscopy
+    - Energy Dispersive X-ray Spectroscopy
+    - Fused Multi-Modal Microscopy
   authors:
     - name: Jason Manassa
       corresponding: True
       affiliations:
-        - Department of Materials Science and Engineering, University of Michigan, Ann Arbor, MI, USA
+        - id: umich
+          department: Department of Materials Science and Engineering
+          institution: University of Michigan
+          address: Ann Arbor, MI, USA
+          ror: 00jmfr291
       orcid: 0000-0001-5167-5989
       email: jmanassa@umich.edu
     - name: Miti Shah
-      corresponding: False
-      affiliations:
-        - Department of Nuclear Engineering and Radiological Sciences, University of Michigan, Ann Arbor, MI, USA
+      affiliations: [umich]
       orcid: 0000-0002-2142-7295
-      email: mitis@umich.edu
     - name: Min Gee Cho
-      corresponding: False
       affiliations:
-        - Department of Materials Science and Engineering, University of California at Berkeley, Berkeley, CA, USA
-        - National Center for Electron Microscopy, Molecular Foundry, Lawrence Berkeley National Laboratory, Berkeley, CA, USA
+        - id: berkeley
+          department: Department of Materials Science and Engineering
+          institution: University of California, Berkeley
+          address: Berkeley, CA, USA
+          ror: 01an7q238
+        - id: ncem
+          department: National Center for Electron Microscopy, Molecular Foundry
+          institution: Lawrence Berkeley National Laboratory
+          address: 1 Cyclotron Road, Berkeley, CA, USA, 94720
+          ror: 02jbv0t02
       orcid: 0000-0003-4490-7352
-      email: mgcho@lbl.gov
     - name: Zichao Wendy Di
-      corresponding: False
       affiliations:
-        - Mathematics and Computer Science Division, Argonne National Laboratory, Lemont, IL, USA
+        - id: argonne
+          department: Mathematics and Computer Science Division
+          institution: Argonne National Laboratory
+          address: Lemont, IL, USA
+          ror: 05gvnxz63
       orcid: 0000-0002-4131-9363
-      email: wendydi@anl.gov
     - name: Yi Jiang
-      corresponding: False
       affiliations:
-        - Advanced Photon Source Facility, Argonne National Laboratory, Lemont, IL, USA
+        - id: argonne-aps
+          department: Advanced Photon Source Facility
+          institution: Argonne National Laboratory
+          address: Lemont, IL, USA
+          ror: 05gvnxz63
       orcid: 0000-0002-2807-1324
-      email: yjiang@anl.gov
     - name: Jeffrey A. Fessler
-      corresponding: False
       affiliations:
-        - Department of Electrical Engineering and Computer Science, University of Michigan, Ann Arbor, MI, USA
+        - id: umich-eecs
+          department: Department of Electrical Engineering and Computer Science
+          institution: University of Michigan
+          address: Ann Arbor, MI, USA
+          ror: 00jmfr291
       orcid: 0000-0001-9998-3315
-      email: fessler@umich.edu
     - name: Yu-Tsun Shao
-      corresponding: False
       affiliations:
-        - Mork Family Department of Chemical Engineering and Materials Science, University of Southern California, Los Angeles, California, USA
+        - id: usc
+          department: Mork Family Department of Chemical Engineering and Materials Science
+          institution: University of Southern California
+          address: Los Angeles, CA, USA
+          ror: 03taz7m60
       orcid: 0000-0002-5574-0490
-      email: yutsunsh@usc.edu
     - name: Mary C. Scott
-      corresponding: False
-      affiliations:
-        - Department of Materials Science and Engineering, University of California at Berkeley, Berkeley, CA, USA
-        - National Center for Electron Microscopy, Molecular Foundry, Lawrence Berkeley National Laboratory, Berkeley, CA, USA
+      affiliations: [berkeley, ncem]
       orcid: 0000-0002-9543-6725
-      email: mary.scott@berkeley.edu
     - name: Jonathan Schwartz
       corresponding: True
       affiliations:
-        - Chan Zuckerberg Imaging Institute, 3400 Bridge Parkway, Redwood City, CA 94065, USA
+        - id: czii
+          institution: Chan Zuckerberg Imaging Institute
+          address: Redwood City, CA, USA
+          ror: 02qenvm24
       orcid: 0000-0002-8063-6951
       email: jtschwar@gmail.com
     - name: Robert Hovden
       corresponding: True
-      affiliations:
-        - Department of Materials Science and Engineering, University of Michigan, Ann Arbor, MI, USA
+      affiliations: [umich]
       orcid: 0000-0002-3403-8803
       email: hovden@umich.edu
-  date: 2024-6-28
-  keywords: STEM, HAADF, EELS, EDX, Fused Multi-Modal
+  open_access: true
+  license: CC-BY-4.0
+  github: https://github.com/msa-em/fused-multi-modal-em
+  date: 2024-08-22
+  history:
+    submitted: 2024-08-22
+  #   published: 2024-07-27
   exports:
     - format: pdf
+    - format: meca
+  banner: banner.png
+  exclude:
+    - README.md
   abbreviations:
     DOI: digital object identifier
     FFT: fast Fourier transform
@@ -85,21 +124,7 @@ project:
     STEM: scanning transmission electron microscopy
     SNR: signal-to-noise ratio
     tif: tag image file format
-  # thebe:
-  #   server: true
-  jupyter:
-    server:
-      url: 'http://localhost:8888'
-      token: '512ac78f14e1141db1fac17e8b4099c1e5bc7d589518b38c'
+    sr: steradian
+
 site:
   template: book-theme
-  title: Fused Multi-Modal Electron Microscopy
-  nav: []
-  logo_text: Fused Multi-Modal Electron Microscopy
-  projects:
-    - slug: myst
-      path: .
-  actions:
-    - title: Learn More
-      url: https://doi.org/10.1038/s41524-021-00692-5
-  domains: []
