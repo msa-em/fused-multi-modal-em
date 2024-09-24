@@ -5,9 +5,15 @@ subtitle: A beginner's guide
 ---
 
 +++ {"part": "abstract"} 
-Chemical mapping of nano-scale and atomic chemistry via spectroscopic electron microscopy has challenged researchers for decades due to the fundamental tradeoff between electron dose, noise, and resolution. Inelastic spectroscopic signals (electron energy loss (EELS) or energy-dispersive x-ray (X-EDS) spectroscopy) that yield elemental signatures are rare, resulting in long dwell times to produce discernable structure. This process often destroys the sample and distorts the chemical map during acquisition.  Lower dose scans can be taken to combat this issue, but they often do not have enough signal to produce meaningful results. 
+Chemical mapping of nano-scale and atomic chemistry via spectroscopic electron microscopy has challenged researchers for decades due to the fundamental tradeoff between electron dose, noise, and resolution. 
+Inelastic spectroscopic signals (electron energy loss (EELS) or energy-dispersive x-ray (X-EDS) spectroscopy) that yield elemental signatures are rare, resulting in long dwell times to produce discernable structure. 
+This process often destroys the sample and distorts the chemical map during acquisition.  
+Lower dose scans can be taken to combat this issue, but they often do not have enough signal to produce meaningful results. 
 
-Fused multi-modal electron microscopy offers nano- and atomic-resolution high signal-to-noise-ratio (SNR) recovery of material chemistry by merging low-dose elastically scattered high-angle annular dark-field (HAADF) signals with the inelastic signals. The process works best when all chemistries in the material are mapped spectroscopically and combined with a directly interpretable elastic signal. This article bridges the gap between theory and practice by walking through each step of the fused multi-modal computational pipeline and pointing out best practices when running the code. By the end of this tutorial, anyone with inelastic and elastic 2D projection data should be able to reproducibly  reconstruct chemical maps using fused multi-modal electron microscopy.
+Fused multi-modal electron microscopy offers nano- and atomic-resolution high signal-to-noise-ratio (SNR) recovery of material chemistry by merging low-dose elastically scattered high-angle annular dark-field (HAADF) signals with the inelastic signals. 
+The process works best when all chemistries in the material are mapped spectroscopically and combined with a directly interpretable elastic signal. 
+This article bridges the gap between theory and practice by walking through each step of the fused multi-modal computational pipeline and pointing out best practices when running the code. 
+By the end of this tutorial, anyone with inelastic and elastic 2D projection data should be able to reproducibly  reconstruct chemical maps using fused multi-modal electron microscopy.
 
 +++
 
@@ -20,7 +26,7 @@ Fused Multi-Modal atomic resolution image improvement on  DyScO$_3$
 +++{"part":"epigraph"}
 :::{warning} Pre-print
 This article has not yet been peer-reviewed.  
-_Updated 2024 August 22_
+_Updated 2024 September 24_
 :::
 
 +++
