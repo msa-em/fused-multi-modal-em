@@ -4,8 +4,6 @@ numbering:
   enumerator: 6.%s
 ---
 
-+++ {"part": "Algorithm"} 
-
 ### Algorithms
 
 :::{prf:algorithm} Multi-Modal 2D Data Fusion

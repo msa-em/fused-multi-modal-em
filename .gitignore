@@ -2,5 +2,6 @@ _build
 ~*.docx
 
 .ipynb_checkpoints/
+__pycache__/
 
 .DS_Store
