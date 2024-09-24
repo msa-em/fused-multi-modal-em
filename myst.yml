@@ -100,9 +100,9 @@ project:
   open_access: true
   license: CC-BY-4.0
   github: https://github.com/msa-em/fused-multi-modal-em
-  date: 2024-08-22
+  date: 2024-09-24
   history:
-    submitted: 2024-08-22
+    submitted: 2024-09-24
   #   published: 2024-07-27
   exports:
     - format: pdf
