@@ -16,7 +16,7 @@ However, solving chemistry from HAADF is often difficult or impossible when muli
 Additionally, since the image taken on the microscope is a projection through the whole viewing area, differential density further complicates how to interpret different sections in the image and leads to false conclusions.
 Traditionally, detector outputs like HAADF and X-EDS/EELS have been analyzed independently, overlooking the potential insights from integrating structure and chemical data from the two seperate modalities. 
 Unlike correlative imaging, data-fusion merges sparse signals to enhance the accuracy of both measurements [@Hall_1997; @Lahat_2015; @Di_2016]. 
-Due to its power to improve image quality, this data fusion approach has seen an explosion in popularity in the past decade in the panchromatic, infrared, hyperspectral and Lidar satellite remote sensing communities [@Sun_2023].  
+Due to its power to improve image quality, this data fusion approach has seen an explosion in popularity in the past decade in the panchromatic, infrared, hyperspectral and Lidar satellite remote sensing communities [@Sun_2023].
 Data fusion relies on crafting a model that can capture interactions between different datasets without forcing unrelated connections leading to false conclusions[@Calhoun_2016].
 
 :::{figure} ./figs/Figure_0_comparison.png
@@ -25,7 +25,7 @@ Data fusion relies on crafting a model that can capture interactions between dif
 HAADF, X-EDS, and Fused Multi-Modal comparison of final images collected of DyScO$_3$
 :::
 
-We walkthrough the steps for multi-modal electron microscopy as a mathematical model, a computational algorithm, and finally through code implementation to make this technique more accessible to the greater electron microscopy community.  
+We walkthrough the steps for multi-modal electron microscopy as a mathematical model, a computational algorithm, and finally through code implementation to make this technique more accessible to the greater electron microscopy community.
 We have provided a sample dataset that is accompanied by a full code tutorial, and we have provided an algorithm section where every variable is explained and sequentially manipulated for full transparency. 
 This approach has been tested extensively in the case on 2D projections utilizing X-EDS and EELS signals [@Schwartz_2022]. 
 When multi-modal data fusion performs well, it significantly boosts the SNR of chemical maps by 300-500% and enables a reduction in required doses by more than an order of magnitude. 
