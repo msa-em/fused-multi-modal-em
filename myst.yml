@@ -1,6 +1,7 @@
 # See docs at: https://myst.tools/docs/mystjs/frontmatter
 version: 1
 project:
+  doi: 10.69761/MXVR4353
   id: msa-em-fused-multi-modal-em-1
   title: Fused Multi-Modal Electron Microscopy
   subtitle: A beginner's guide
@@ -21,6 +22,10 @@ project:
     - Electron Energy Loss Spectroscopy
     - Energy Dispersive X-ray Spectroscopy
     - Fused Multi-Modal Microscopy
+  venue:
+    title: Elemental Microscopy
+    short_title: EM
+    doi: 10.69761/EM
   authors:
     - name: Jason Manassa
       corresponding: True
